@@ -18,7 +18,7 @@ public class Redex implements λ {
 
     @Override
     public λ compute() {
-        λ l = x.compute().apply(y);
+        λ l = x.apply(y);
 
         for (λ z : zs)
             l = l.apply(z);
