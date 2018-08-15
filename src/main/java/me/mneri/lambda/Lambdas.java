@@ -4,14 +4,19 @@ import static me.mneri.lambda.Redex.β;
 
 public final class Lambdas {
     //@formatter:off
+    public static final λ B = (λ x) -> (λ y) -> (λ z) -> β(x, β(y, z));
+    public static final λ C = (λ x) -> (λ y) -> (λ z) -> β(x, z, y);
     public static final λ I = (λ x) -> x;
     public static final λ K = (λ x) -> (λ y) -> x;
     public static final λ S = (λ x) -> (λ y) -> (λ z) -> β(x, z, β(y, z));
+    public static final λ U = (λ x) -> (λ y) -> β(y, β(x, x, y));
+    public static final λ W = (λ x) -> (λ y) -> β(x, y, y);
     public static final λ X = (λ f) -> β((λ x) -> β(x, x), (λ x) -> β(f, β(x, x)));
     public static final λ Y = (λ f) -> β((λ x) -> β(f, β(x, x)), (λ x) -> β(f, β(x, x)));
     public static final λ Θ = β((λ x) -> (λ y) -> β(y, β(x, x, y)), (λ x) -> (λ y) -> β(y, β(x, x, y)));
     public static final λ ι = (λ f) -> β(f, S, K);
-    public static final λ Ω = (λ x) -> β(x, x);
+    public static final λ ω = (λ x) -> β(x, x);
+    public static final λ Ω = β(ω, ω);
 
     public static final λ TRUE  = (λ t) -> (λ f) -> t;
     public static final λ FALSE = (λ t) -> (λ f) -> f;
@@ -21,6 +26,7 @@ public final class Lambdas {
     public static final λ XOR   = (λ p) -> (λ q) -> β(p, β(q, FALSE, p), q);
     public static final λ IF    = (λ p) -> (λ t) -> (λ f) -> β(p, t, f);
 
+    public static final λ ISZERO = (λ n) -> β(n, (λ x) -> FALSE, TRUE);
     public static final λ SUCC = (λ n) -> (λ f) -> (λ x) -> β(f, β(n, f, x));
     public static final λ PRED = (λ n) -> (λ f) -> (λ x) -> β(n, (λ g) -> (λ h) -> β(h, β(g, f)), (λ u) -> x, (λ u) -> u);
     public static final λ ADD  = (λ m) -> (λ n) -> β(n, SUCC, m);
@@ -28,7 +34,6 @@ public final class Lambdas {
     public static final λ MUL  = (λ m) -> (λ n) -> (λ f) -> β(m, β(n, f));
     public static final λ EXP  = (λ m) -> (λ n) -> β(n, m);
 
-    public static final λ ISZERO = (λ n) -> β(n, (λ x) -> FALSE, TRUE);
     public static final λ LEQ    = (λ m) -> (λ n) -> β(ISZERO, β(SUB, m, n));
     public static final λ GEQ    = (λ m) -> (λ n) -> β(ISZERO, β(SUB, n, m));
     public static final λ EQ     = (λ m) -> (λ n) -> β(AND, β(LEQ, m, n), β(LEQ, n, m));
