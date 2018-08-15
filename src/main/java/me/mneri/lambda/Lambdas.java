@@ -9,8 +9,9 @@ public final class Lambdas {
     public static final λ S = (λ x) -> (λ y) -> (λ z) -> β(x, z, β(y, z));
     public static final λ X = (λ f) -> β((λ x) -> β(x, x), (λ x) -> β(f, β(x, x)));
     public static final λ Y = (λ f) -> β((λ x) -> β(f, β(x, x)), (λ x) -> β(f, β(x, x)));
-    public static final λ Ω = (λ x) -> β(x, x);
     public static final λ Θ = β((λ x) -> (λ y) -> β(y, β(x, x, y)), (λ x) -> (λ y) -> β(y, β(x, x, y)));
+    public static final λ ι = (λ f) -> β(f, S, K);
+    public static final λ Ω = (λ x) -> β(x, x);
 
     public static final λ TRUE  = (λ t) -> (λ f) -> t;
     public static final λ FALSE = (λ t) -> (λ f) -> f;
