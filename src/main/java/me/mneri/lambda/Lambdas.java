@@ -3,30 +3,29 @@ package me.mneri.lambda;
 import static me.mneri.lambda.Redex.β;
 
 public final class Lambdas {
-    public static final λ I      = (λ x) -> x;
-    public static final λ K      = (λ x) -> (λ y) -> x;
-    public static final λ S      = (λ x) -> (λ y) -> (λ z) -> β(x, z, β(y, z));
-    public static final λ X      = (λ f) -> β((λ x) -> β(x, x), (λ x) -> β(f, β(x, x)));
-    public static final λ Y      = (λ f) -> β((λ x) -> β(f, β(x, x)), (λ x) -> β(f, β(x, x)));
+    //@formatter:off
+    public static final λ I = (λ x) -> x;
+    public static final λ K = (λ x) -> (λ y) -> x;
+    public static final λ S = (λ x) -> (λ y) -> (λ z) -> β(x, z, β(y, z));
+    public static final λ X = (λ f) -> β((λ x) -> β(x, x), (λ x) -> β(f, β(x, x)));
+    public static final λ Y = (λ f) -> β((λ x) -> β(f, β(x, x)), (λ x) -> β(f, β(x, x)));
+    public static final λ Ω = (λ x) -> β(x, x);
+    public static final λ Θ = β((λ x) -> (λ y) -> β(y, β(x, x, y)), (λ x) -> (λ y) -> β(y, β(x, x, y)));
 
-    public static final λ Ω      = (λ x) -> β(x, x);
-    public static final λ Θ      = β((λ x) -> (λ y) -> β(y, β(x, x, y)), (λ x) -> (λ y) -> β(y, β(x, x, y)));
+    public static final λ TRUE  = (λ t) -> (λ f) -> t;
+    public static final λ FALSE = (λ t) -> (λ f) -> f;
+    public static final λ AND   = (λ p) -> (λ q) -> β(p, q, p);
+    public static final λ OR    = (λ p) -> (λ q) -> β(p, p, q);
+    public static final λ NOT   = (λ b) -> (λ t) -> (λ f) -> β(b, f, t);
+    public static final λ XOR   = (λ p) -> (λ q) -> β(p, β(q, FALSE, p), q);
+    public static final λ IF    = (λ p) -> (λ t) -> (λ f) -> β(p, t, f);
 
-    public static final λ TRUE   = (λ t) -> (λ f) -> t;
-    public static final λ FALSE  = (λ t) -> (λ f) -> f;
-    public static final λ AND    = (λ p) -> (λ q) -> β(p, q, p);
-    public static final λ OR     = (λ p) -> (λ q) -> β(p, p, q);
-    public static final λ NOT    = (λ b) -> (λ t) -> (λ f) -> β(b, f, t);
-    public static final λ XOR    = (λ p) -> (λ q) -> β(p, β(q, FALSE, p), q);
-
-    public static final λ IF     = (λ p) -> (λ t) -> (λ f) -> β(p, t, f);
-
-    public static final λ SUCC   = (λ n) -> (λ f) -> (λ x) -> β(f, β(n, f, x));
-    public static final λ PRED   = (λ n) -> (λ f) -> (λ x) -> β(n, (λ g) -> (λ h) -> β(h, β(g, f)), (λ u) -> x, (λ u) -> u);
-    public static final λ ADD    = (λ m) -> (λ n) -> β(n, SUCC, m);
-    public static final λ SUB    = (λ m) -> (λ n) -> β(n, PRED, m);
-    public static final λ MUL    = (λ m) -> (λ n) -> (λ f) -> β(m, β(n, f));
-    public static final λ EXP    = (λ m) -> (λ n) -> β(n, m);
+    public static final λ SUCC = (λ n) -> (λ f) -> (λ x) -> β(f, β(n, f, x));
+    public static final λ PRED = (λ n) -> (λ f) -> (λ x) -> β(n, (λ g) -> (λ h) -> β(h, β(g, f)), (λ u) -> x, (λ u) -> u);
+    public static final λ ADD  = (λ m) -> (λ n) -> β(n, SUCC, m);
+    public static final λ SUB  = (λ m) -> (λ n) -> β(n, PRED, m);
+    public static final λ MUL  = (λ m) -> (λ n) -> (λ f) -> β(m, β(n, f));
+    public static final λ EXP  = (λ m) -> (λ n) -> β(n, m);
 
     public static final λ ISZERO = (λ n) -> β(n, (λ x) -> FALSE, TRUE);
     public static final λ LEQ    = (λ m) -> (λ n) -> β(ISZERO, β(SUB, m, n));
@@ -52,6 +51,14 @@ public final class Lambdas {
     public static final λ FOURTEEN = β(SUCC, THIRTEEN);
     public static final λ FIFTEEN  = β(SUCC, FOURTEEN);
     public static final λ SIXTEEN  = β(SUCC, FIFTEEN);
+
+    public static final λ THIRTYTWO             = β(EXP, TWO, FIVE);
+    public static final λ SIXTYFOUR             = β(EXP, TWO, SIX);
+    public static final λ ONEHUNDREDTWENTYEIGHT = β(EXP, TWO, SEVEN);
+    public static final λ TWOHUNDREDFIFTYSIX    = β(EXP, TWO, EIGHT);
+    public static final λ FIVEHUNDREDSIXTEEN    = β(EXP, TWO, NINE);
+    public static final λ ONETHOUSANDTWENTYFOUR = β(EXP, TWO, TEN);
+    //@formatter:on
 
     private Lambdas() {
     }
