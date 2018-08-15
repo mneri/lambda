@@ -7,7 +7,7 @@ import static me.mneri.lambda.Redex.β;
 
 public class LazyEvaluation {
     public static void main(String... args) {
-        λ DIE = β(IF, TRUE, I, β(Ω, Ω));
+        λ DIE = β(IF, TRUE, I, Ω);
         λ r   = DIE.compute();
 
         System.out.println("Not dead, it works out of the box.");
