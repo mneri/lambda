@@ -10,6 +10,6 @@ public class LazyEvaluation {
         λ DIE = β(IF, TRUE, I, β(Ω, Ω));
         λ r   = DIE.compute();
 
-        System.out.println("Not dead");
+        System.out.println("Not dead, it works out of the box.");
     }
 }
