@@ -1,5 +1,5 @@
 # lambda
-lambda is a small library that brings lambda calculus functions, syntax and spirit into Java.
+lambda is a small library that brings lambda calculus functions, syntax and lazy evaluation into Java.
 
 # Examples
 
