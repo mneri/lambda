@@ -68,6 +68,12 @@ public final class Lambdas {
     public static final λ PAIR  = (λ x) -> (λ y) -> (λ z) -> β(z, x, y);
     public static final λ FIRST = (λ p) -> β(p, (λ x) -> (λ y) -> x);
     public static final λ SECOND = (λ p) -> β(p, (λ x) -> (λ y) -> y);
+
+    public static final λ CONS  = PAIR;
+    public static final λ HEAD  = FIRST;
+    public static final λ TAIL  = SECOND;
+    public static final λ NIL   = FALSE;
+    public static final λ ISNIL = (λ l) -> β(l, (λ h) -> (λ t) -> (λ d) -> FALSE, TRUE);
     //@formatter:on
 
     private Lambdas() {
