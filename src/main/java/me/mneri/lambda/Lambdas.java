@@ -64,6 +64,10 @@ public final class Lambdas {
     public static final λ TWOHUNDREDFIFTYSIX    = β(EXP, TWO, EIGHT);
     public static final λ FIVEHUNDREDSIXTEEN    = β(EXP, TWO, NINE);
     public static final λ ONETHOUSANDTWENTYFOUR = β(EXP, TWO, TEN);
+
+    public static final λ PAIR  = (λ x) -> (λ y) -> (λ z) -> β(z, x, y);
+    public static final λ FIRST = (λ p) -> β(p, (λ x) -> (λ y) -> x);
+    public static final λ SECOND = (λ p) -> β(p, (λ x) -> (λ y) -> y);
     //@formatter:on
 
     private Lambdas() {
