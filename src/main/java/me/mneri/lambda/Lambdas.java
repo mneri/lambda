@@ -65,8 +65,10 @@ public final class Lambdas {
     public static final λ FIVEHUNDREDSIXTEEN    = β(EXP, TWO, NINE);
     public static final λ ONETHOUSANDTWENTYFOUR = β(EXP, TWO, TEN);
 
-    public static final λ DIV = β(Y, (λ f) -> (λ m) -> (λ n) -> β(IF, β(LESS, m, n), ZERO, β(ADD, ONE, β(f, β(SUB, m, n), n))));
-    public static final λ MOD = β(Y, (λ f) -> (λ m) -> (λ n) -> β(IF, β(LESS, m, n), m, β(f, β(SUB, m, n), n)));
+    public static final λ DIV    = β(Y, (λ f) -> (λ m) -> (λ n) -> β(IF, β(LESS, m, n), ZERO, β(ADD, ONE, β(f, β(SUB, m, n), n))));
+    public static final λ MOD    = β(Y, (λ f) -> (λ m) -> (λ n) -> β(IF, β(LESS, m, n), m, β(f, β(SUB, m, n), n)));
+    public static final λ ISEVEN = (λ n) -> β(ISZERO, β(MOD, n, TWO));
+    public static final λ ISODD  = (λ n) -> β(NOT, β(ISEVEN, n));
 
     public static final λ PAIR   = (λ x) -> (λ y) -> (λ z) -> β(z, x, y);
     public static final λ FIRST  = (λ p) -> β(p, (λ x) -> (λ y) -> x);
