@@ -22,8 +22,8 @@ public final class Lambdas {
     public static final λ FALSE = (λ t) -> (λ f) -> f;
     public static final λ AND   = (λ p) -> (λ q) -> β(p, q, p);
     public static final λ OR    = (λ p) -> (λ q) -> β(p, p, q);
-    public static final λ NOT   = (λ b) -> (λ t) -> (λ f) -> β(b, f, t);
-    public static final λ XOR   = (λ p) -> (λ q) -> β(p, β(q, FALSE, p), q);
+    public static final λ NOT   = (λ p) -> β(p, FALSE, TRUE);
+    public static final λ XOR   = (λ p) -> (λ q) -> β(p, β(NOT, q), q);
     public static final λ IF    = (λ p) -> (λ t) -> (λ f) -> β(p, t, f);
 
     public static final λ ISZERO = (λ n) -> β(n, (λ x) -> FALSE, TRUE);
@@ -37,8 +37,8 @@ public final class Lambdas {
     public static final λ LEQ   = (λ m) -> (λ n) -> β(ISZERO, β(SUB, m, n));
     public static final λ GEQ   = (λ m) -> (λ n) -> β(ISZERO, β(SUB, n, m));
     public static final λ EQ    = (λ m) -> (λ n) -> β(AND, β(LEQ, m, n), β(LEQ, n, m));
-    public static final λ LESS  = (λ m) -> (λ n) -> β(AND, β(LEQ, m, n), β(NOT, β(EQ, m, n)));
-    public static final λ GREAT = (λ m) -> (λ n) -> β(AND, β(GEQ, m, n), β(NOT, β(EQ, m, n)));
+    public static final λ LESS  = (λ m) -> (λ n) -> β(AND, β(LEQ, m, n), β(NOT, β(LEQ, n, m)));
+    public static final λ GREAT = (λ m) -> (λ n) -> β(AND, β(GEQ, m, n), β(NOT, β(GEQ, n, m)));
 
     public static final λ ZERO     = (λ f) -> (λ x) -> x;
     public static final λ ONE      = β(SUCC, ZERO);
@@ -64,6 +64,9 @@ public final class Lambdas {
     public static final λ TWOHUNDREDFIFTYSIX    = β(EXP, TWO, EIGHT);
     public static final λ FIVEHUNDREDSIXTEEN    = β(EXP, TWO, NINE);
     public static final λ ONETHOUSANDTWENTYFOUR = β(EXP, TWO, TEN);
+
+    public static final λ DIV = β(Y, (λ f) -> (λ m) -> (λ n) -> β(IF, β(LESS, m, n), ZERO, β(ADD, ONE, β(f, β(SUB, m, n), n))));
+    public static final λ MOD = β(Y, (λ f) -> (λ m) -> (λ n) -> β(IF, β(LESS, m, n), m, β(f, β(SUB, m, n), n)));
 
     public static final λ PAIR   = (λ x) -> (λ y) -> (λ z) -> β(z, x, y);
     public static final λ FIRST  = (λ p) -> β(p, (λ x) -> (λ y) -> x);
