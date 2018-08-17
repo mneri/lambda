@@ -1,6 +1,7 @@
 package me.mneri.lambda;
 
 public class Redex implements λ {
+    private λ cache;
     private λ x;
     private λ y;
     private λ[] zs;
@@ -18,12 +19,16 @@ public class Redex implements λ {
 
     @Override
     public λ compute() {
-        λ l = x.apply(y);
+        if (cache == null) {
+            λ l = x.apply(y);
 
-        for (λ z : zs)
-            l = l.apply(z);
+            for (λ z : zs)
+                l = l.apply(z);
 
-        return l.compute();
+            cache = l.compute();
+        }
+
+        return cache;
     }
 
     public static λ β(λ x, λ y, λ... z) {
