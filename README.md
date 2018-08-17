@@ -1,4 +1,6 @@
 # lambda
+[![Build Status](https://travis-ci.org/mneri/lambda.svg?branch=master)](https://travis-ci.org/mneri/lambda)
+
 lambda is a small library that brings lambda calculus functions, syntax and lazy evaluation into Java.
 
 # Examples
