@@ -13,13 +13,21 @@ public class Main {
     @Test
     public void collatz() {
         //@formatter:off
-        λ COLLATZ = β(Y, (λ f) -> (λ n) -> β(IF, β(EQ, n, ONE),
+        λ COLLATZ = β(X, (λ f) -> (λ n) -> β(IF, β(EQ, n, ONE),
                                                  β(CONS, ONE, NIL),
                                                  β(CONS, n, β(f, β(IF, β(ISEVEN, n),
                                                                        β(DIV, n, TWO),
                                                                        β(SUCC, β(MUL, n, THREE)))))));
         β(COLLATZ, FIFTEEN).compute();
         //@formatter:on
+    }
+
+    @Test
+    public void comparison() {
+        λ M = β(SUCC, β(EXP, TWO, TEN));
+        λ N = β(EXP, TWO, TEN);
+        assertEquals(β(GREAT, M, N).compute(), TRUE);
+        assertEquals(β(LESS, N, M).compute(), TRUE);
     }
 
     @Test
@@ -35,7 +43,7 @@ public class Main {
     @Test
     public void fibonacci() {
         //@formatter:off
-        λ FIB = β(Y, (λ f) -> (λ n) -> β(IF, β(LEQ, n, TWO),
+        λ FIB = β(Θ, (λ f) -> (λ n) -> β(IF, β(LEQ, n, TWO),
                                              ONE,
                                              β(ADD, β(f, β(PRED, n)), β(f, β(SUB, n, TWO)))));
         assertEquals(β(EQ, β(FIB, SEVEN), THIRTEEN).compute(), TRUE);
