@@ -15,6 +15,6 @@ public class Collatz {
                                                                  β(SUCC, β(MUL, n, THREE)))))));
         //@formatter:on
 
-        β(COLLATZ, THIRTEEN).compute();
+        β(COLLATZ, FIFTEEN).compute();
     }
 }
