@@ -12,7 +12,8 @@ public class Fibonacci {
                                              ONE,
                                              β(ADD, β(f, β(SUB, n, ONE)),
                                                     β(f, β(SUB, n, TWO)))));
-        λ r   = β(EQ, β(FIB, SEVEN), THIRTEEN).compute();
+        λ r   = β(EQ, β(FIB, SEVEN),
+                      THIRTEEN).compute();
         //@formatter:on
 
         System.out.println(r == TRUE ? "T" : "F");

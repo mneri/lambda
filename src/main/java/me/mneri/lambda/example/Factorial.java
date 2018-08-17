@@ -12,7 +12,8 @@ public class Factorial {
                                               ONE,
                                               β(MUL, n,
                                                      β(f, β(PRED, n)))));
-        λ r    = β(EQ, β(FACT, FIVE), β(MUL, TWELVE, TEN)).compute();
+        λ r    = β(EQ, β(FACT, FIVE),
+                       β(MUL, TWELVE, TEN)).compute();
         //@formatter:on
 
         System.out.println(r == TRUE ? "T" : "F");
