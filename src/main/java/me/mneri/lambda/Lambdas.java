@@ -78,7 +78,10 @@ public final class Lambdas {
     public static final λ HEAD  = FIRST;
     public static final λ TAIL  = SECOND;
     public static final λ NIL   = FALSE;
-    public static final λ ISNIL = (λ l) -> β(l, (λ h) -> (λ t) -> (λ d) -> FALSE, TRUE);
+    public static final λ ISNIL = (λ l) -> β(β(l, (λ h) -> (λ t) -> (λ d) -> FALSE), TRUE);
+
+    public static final λ FOLDL = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(HEAD, l), β(f, a, z, β(TAIL, l)))));
+    public static final λ FOLDR = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(f, a, z, β(TAIL, l)), β(HEAD, l))));
     //@formatter:on
 
     private Lambdas() {
