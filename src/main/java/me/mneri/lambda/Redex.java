@@ -20,12 +20,16 @@ public class Redex implements λ {
     @Override
     public λ compute() {
         if (cache == null) {
-            λ l = x.apply(y);
+            cache = x.apply(y);
 
             for (λ z : zs)
-                l = l.apply(z);
+                cache = cache.apply(z);
 
-            cache = l.compute();
+            cache = cache.compute();
+
+            x = null;
+            y = null;
+            zs = null;
         }
 
         return cache;
