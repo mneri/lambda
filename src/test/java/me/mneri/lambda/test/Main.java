@@ -51,6 +51,21 @@ public class Main {
 
     }
 
+    public static void main(String... args) {
+        λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
+        System.out.println(β(EQ, β(FOLDR, ADD, ZERO, LIST), TEN).compute() == TRUE);
+    }
+
+    @Test
+    public void fold() {
+        λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
+        λ SUML = β(FOLDL, ADD, ZERO);
+        λ SUMR = β(FOLDR, ADD, ZERO);
+        λ SUM  = β(DIV, β(MUL, FOUR, β(SUCC, FOUR)), TWO);
+        assertEquals(β(EQ, β(SUML, LIST), β(SUMR, LIST)).compute(), TRUE);
+        assertEquals(β(EQ, SUM, β(SUML, LIST)).compute(), TRUE);
+    }
+
     @Test
     public void lazy() {
         λ DIE = β(IF, TRUE, I, Ω);
