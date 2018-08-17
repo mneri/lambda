@@ -48,27 +48,35 @@ public class Main {
                                              β(ADD, β(f, β(PRED, n)), β(f, β(SUB, n, TWO)))));
         assertEquals(β(EQ, β(FIB, SEVEN), THIRTEEN).compute(), TRUE);
         //@formatter:on
-
     }
 
-    public static void main(String... args) {
+    @Test
+    public void filter() {
         λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
-        System.out.println(β(EQ, β(FOLDR, ADD, ZERO, LIST), TEN).compute() == TRUE);
+        assertEquals(β(EQ, β(LEN, β(FILTER, ISEVEN, LIST)), TWO).compute(), TRUE);
     }
 
     @Test
     public void fold() {
+        //@formatter:off
         λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
         λ SUML = β(FOLDL, ADD, ZERO);
         λ SUMR = β(FOLDR, ADD, ZERO);
         λ SUM  = β(DIV, β(MUL, FOUR, β(SUCC, FOUR)), TWO);
         assertEquals(β(EQ, β(SUML, LIST), β(SUMR, LIST)).compute(), TRUE);
         assertEquals(β(EQ, SUM, β(SUML, LIST)).compute(), TRUE);
+        //@formatter:on
     }
 
     @Test
     public void lazy() {
         λ DIE = β(IF, TRUE, I, Ω);
         DIE.compute();
+    }
+
+    @Test
+    public void len() {
+        λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
+        assertEquals(β(EQ, β(LEN, LIST), FOUR).compute(), TRUE);
     }
 }

@@ -80,8 +80,10 @@ public final class Lambdas {
     public static final λ NIL   = FALSE;
     public static final λ ISNIL = (λ l) -> β(β(l, (λ h) -> (λ t) -> (λ d) -> FALSE), TRUE);
 
-    public static final λ FOLDL = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(HEAD, l), β(f, a, z, β(TAIL, l)))));
-    public static final λ FOLDR = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(f, a, z, β(TAIL, l)), β(HEAD, l))));
+    public static final λ FILTER = β(Y, (λ f) -> (λ p) -> (λ l) -> β(IF, β(ISNIL, l), NIL, β(IF, β(p, β(HEAD, l)), β(CONS, β(HEAD, l), β(f, p, β(TAIL, l))), β(f, p, β(TAIL, l)))));
+    public static final λ FOLDL  = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(HEAD, l), β(f, a, z, β(TAIL, l)))));
+    public static final λ FOLDR  = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(f, a, z, β(TAIL, l)), β(HEAD, l))));
+    public static final λ LEN    = β(FOLDR, (λ a) -> (λ c) -> β(SUCC, a), ZERO);
     //@formatter:on
 
     private Lambdas() {
