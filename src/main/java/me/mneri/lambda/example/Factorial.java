@@ -7,8 +7,13 @@ import static me.mneri.lambda.Redex.β;
 
 public class Factorial {
     public static void main(String... args) {
-        λ FACT = β(Y, (λ f) -> (λ n) -> β(IF, β(LEQ, n, ONE), ONE, β(MUL, n, β(f, β(PRED, n)))));
+        //@formatter:off
+        λ FACT = β(Y, (λ f) -> (λ n) -> β(IF, β(LEQ, n, ONE),
+                                              ONE,
+                                              β(MUL, n,
+                                                     β(f, β(PRED, n)))));
         λ r    = β(EQ, β(FACT, FIVE), β(MUL, TWELVE, TEN)).compute();
+        //@formatter:on
 
         System.out.println(r == TRUE ? "T" : "F");
     }
