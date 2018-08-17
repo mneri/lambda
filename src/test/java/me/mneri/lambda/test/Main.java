@@ -83,10 +83,12 @@ public class Main {
     @Test
     public void max() {
         assertEquals(β(EQ, β(MAX, FOUR, FIVE), FIVE).compute(), TRUE);
+        assertEquals(β(EQ, β(MAX, FIVE, FIVE), FIVE).compute(), TRUE);
     }
 
     @Test
     public void min() {
         assertEquals(β(EQ, β(MIN, FOUR, FIVE), FOUR).compute(), TRUE);
+        assertEquals(β(EQ, β(MIN, FOUR, FOUR), FOUR).compute(), TRUE);
     }
 }
