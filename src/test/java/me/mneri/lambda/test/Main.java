@@ -79,4 +79,14 @@ public class Main {
         λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
         assertEquals(β(EQ, β(LEN, LIST), FOUR).compute(), TRUE);
     }
+
+    @Test
+    public void max() {
+        assertEquals(β(EQ, β(MAX, FOUR, FIVE), FIVE).compute(), TRUE);
+    }
+
+    @Test
+    public void min() {
+        assertEquals(β(EQ, β(MIN, FOUR, FIVE), FOUR).compute(), TRUE);
+    }
 }

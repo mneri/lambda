@@ -33,6 +33,8 @@ public final class Lambdas {
     public static final λ SUB    = (λ m) -> (λ n) -> β(n, PRED, m);
     public static final λ MUL    = (λ m) -> (λ n) -> (λ f) -> β(m, β(n, f));
     public static final λ EXP    = (λ m) -> (λ n) -> β(n, m);
+    public static final λ MAX    = (λ m) -> (λ n) -> β(IF, β(ISZERO, β(SUB, m, n)), n, m);
+    public static final λ MIN    = (λ m) -> (λ n) -> β(IF, β(ISZERO, β(SUB, m, n)), m, n);
 
     public static final λ LEQ   = (λ m) -> (λ n) -> β(ISZERO, β(SUB, m, n));
     public static final λ GEQ   = (λ m) -> (λ n) -> β(ISZERO, β(SUB, n, m));
