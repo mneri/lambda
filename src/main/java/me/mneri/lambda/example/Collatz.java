@@ -9,10 +9,10 @@ public class Collatz {
     public static void main(String... args) {
         //@formatter:off
         λ COLLATZ = β(Y, (λ f) -> (λ n) -> β(IF, β(EQ, n, ONE),
-                                                 I,
-                                                 β(f, β(IF, β(ISEVEN, n),
-                                                            β(DIV, n, TWO),
-                                                            β(SUCC, β(MUL, n, THREE))))));
+                                                 β(CONS, ONE, NIL),
+                                                 β(CONS, n, β(f, β(IF, β(ISEVEN, n),
+                                                                 β(DIV, n, TWO),
+                                                                 β(SUCC, β(MUL, n, THREE)))))));
         //@formatter:on
 
         β(COLLATZ, THIRTEEN).compute();
