@@ -18,8 +18,8 @@ public class Main {
                                                  β(CONS, n, β(f, β(IF, β(ISEVEN, n),
                                                                        β(DIV, n, TWO),
                                                                        β(SUCC, β(MUL, n, THREE)))))));
-        //@formatter:on
         β(COLLATZ, FIFTEEN).compute();
+        //@formatter:on
     }
 
     @Test
