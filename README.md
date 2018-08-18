@@ -9,11 +9,7 @@ One of the goals of the project is to make Java look like lambda calculus as muc
 ```java
 λ I = (λ x) -> x;
 ```
-β-reductions are introduced by the word `β`; the `AND` function
-
-![I](http://mneri.me/pnglatex?f=%5Cmbox%7BAND%7D%3D%5Clambda%20p%5Ccdot%5Clambda%20q%5Ccdot%20p%5C%20q%5C%20p "I")
-
-becomes
+β-reductions are introduced by the word `β`; the ![AND](http://mneri.me/pnglatex?f=%5Cmbox%7BAND%7D%3D%5Clambda%20a%5Ccdot%5Clambda%20b%5Ccdot%20a%5C%20b%5C%20a "AND") function becomes
 
 ```java
 λ AND = (λ p) -> (λ q) -> β(p, q, p);
