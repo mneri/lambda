@@ -1,5 +1,5 @@
 # lambda
-lambda is a small library that brings lambda calculus functions, syntax and lazy evaluation into Java.
+`lambda` is a small library that brings lambda calculus functions, syntax and lazy evaluation into Java.
 
 In lambda calculus everything is a λ-expression: there is no such thing as integer, floating point or operator. Numbers, operators and complex objects such as lists are encoded via λ-expressions.
 
