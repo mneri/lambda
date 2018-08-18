@@ -93,6 +93,15 @@ public class Main {
     }
 
     @Test
+    public void map() {
+        //@formatter:off
+        λ LIST   = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
+        λ DOUBLE = β(MUL, TWO);
+        assertEquals(β(EQ, β(NTH, TWO, β(MAP, DOUBLE, LIST)), SIX).compute(), TRUE);
+        //@formatter:on
+    }
+
+    @Test
     public void max() {
         assertEquals(β(EQ, β(MAX, FOUR, FIVE), FIVE).compute(), TRUE);
         assertEquals(β(EQ, β(MAX, FIVE, FOUR), FIVE).compute(), TRUE);
@@ -105,6 +114,12 @@ public class Main {
     }
 
     @Test
+    public void nth() {
+        λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
+        assertEquals(β(EQ, β(NTH, TWO, LIST), THREE).compute(), TRUE);
+    }
+
+    @Test
     public void sort() {
         //@formatter:off
         λ LIST = β(CONS, THREE, β(CONS, ONE, β(CONS, FOUR, β(CONS, TWO, NIL))));
@@ -113,10 +128,7 @@ public class Main {
                                               β(CAT, β(CAT, β(f, β(FILTER, β(FLIP, LEQ, β(HEAD, l)), β(TAIL, l))),
                                                                  β(CONS, β(HEAD, l), NIL)),
                                                      β(f, β(FILTER, β(FLIP, GREAT, β(HEAD, l)), β(TAIL, l))))));
-        assertEquals(β(EQ, β(NTH, ZERO, β(SORT, LIST)), ONE).compute(), TRUE);
-        assertEquals(β(EQ, β(NTH, ONE, β(SORT, LIST)), TWO).compute(), TRUE);
         assertEquals(β(EQ, β(NTH, TWO, β(SORT, LIST)), THREE).compute(), TRUE);
-        assertEquals(β(EQ, β(NTH, THREE, β(SORT, LIST)), FOUR).compute(), TRUE);
         //@formatter:on
     }
 }
