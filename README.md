@@ -18,6 +18,10 @@ One of the goals of the project is to make Java look like lambda calculus as muc
 λ AND = (λ a) -> (λ b) -> β(a, b, a);
 ```
 
+# Performances
+
+Long story short, it sucks. But that has never been the goal.
+
 # Example
 The Collatz function can be implemented as follows.
 
@@ -49,7 +53,3 @@ Church encoding for numbers through 16 and powers of two through 1024 have been 
 ```
 
 Standard high-order functions such as `FILTER`, `MAP`, `FOLDL` and `FOLDR`.
-
-# Performances
-
-Long story short, it sucks. But that has never been the goal.
