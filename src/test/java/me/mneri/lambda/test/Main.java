@@ -11,6 +11,12 @@ import static org.junit.Assert.*;
 
 public class Main {
     @Test
+    public void cat() {
+        λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
+        assertEquals(β(EQ, β(LEN, β(CAT, LIST, LIST)), EIGHT).compute(), TRUE);
+    }
+
+    @Test
     public void collatz() {
         //@formatter:off
         λ COLLATZ = β(X, (λ f) -> (λ n) -> β(IF, β(EQ, n, ONE),
@@ -57,14 +63,20 @@ public class Main {
     }
 
     @Test
-    public void fold() {
+    public void foldl() {
         //@formatter:off
         λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
-        λ SUML = β(FOLDL, ADD, ZERO);
-        λ SUMR = β(FOLDR, ADD, ZERO);
         λ SUM  = β(DIV, β(MUL, FOUR, β(SUCC, FOUR)), TWO);
-        assertEquals(β(EQ, β(SUML, LIST), β(SUMR, LIST)).compute(), TRUE);
-        assertEquals(β(EQ, SUM, β(SUML, LIST)).compute(), TRUE);
+        assertEquals(β(EQ, SUM, β(FOLDL, ADD, ZERO, LIST)).compute(), TRUE);
+        //@formatter:on
+    }
+
+    @Test
+    public void foldr() {
+        //@formatter:off
+        λ LIST = β(CONS, ONE, β(CONS, TWO, β(CONS, THREE, β(CONS, FOUR, NIL))));
+        λ SUM  = β(DIV, β(MUL, FOUR, β(SUCC, FOUR)), TWO);
+        assertEquals(β(EQ, SUM, β(FOLDR, ADD, ZERO, LIST)).compute(), TRUE);
         //@formatter:on
     }
 
@@ -83,14 +95,12 @@ public class Main {
     @Test
     public void max() {
         assertEquals(β(EQ, β(MAX, FOUR, FIVE), FIVE).compute(), TRUE);
-        assertEquals(β(EQ, β(MAX, FIVE, FIVE), FIVE).compute(), TRUE);
         assertEquals(β(EQ, β(MAX, FIVE, FOUR), FIVE).compute(), TRUE);
     }
 
     @Test
     public void min() {
         assertEquals(β(EQ, β(MIN, FOUR, FIVE), FOUR).compute(), TRUE);
-        assertEquals(β(EQ, β(MIN, FOUR, FOUR), FOUR).compute(), TRUE);
         assertEquals(β(EQ, β(MIN, FIVE, FOUR), FOUR).compute(), TRUE);
     }
 }
