@@ -88,6 +88,7 @@ public final class Lambdas {
     public static final λ FOLDL  = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(HEAD, l), β(f, a, z, β(TAIL, l)))));
     public static final λ FOLDR  = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(f, a, z, β(TAIL, l)), β(HEAD, l))));
     public static final λ LEN    = β(FOLDR, (λ a) -> (λ c) -> β(SUCC, a), ZERO);
+    public static final λ NTH    = β(Y, (λ f) -> (λ n) -> (λ l) -> β(IF, β(ISZERO, n), β(HEAD, l), β(f, β(PRED, n), β(TAIL, l))));
     //@formatter:on
 
     private Lambdas() {

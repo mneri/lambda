@@ -113,10 +113,10 @@ public class Main {
                                               β(CAT, β(CAT, β(f, β(FILTER, β(FLIP, LEQ, β(HEAD, l)), β(TAIL, l))),
                                                                  β(CONS, β(HEAD, l), NIL)),
                                                      β(f, β(FILTER, β(FLIP, GREAT, β(HEAD, l)), β(TAIL, l))))));
-        assertEquals(β(EQ, β(HEAD, β(SORT, LIST)), ONE).compute(), TRUE);
-        assertEquals(β(EQ, β(HEAD, β(TAIL, β(SORT, LIST))), TWO).compute(), TRUE);
-        assertEquals(β(EQ, β(HEAD, β(TAIL, β(TAIL, β(SORT, LIST)))), THREE).compute(), TRUE);
-        assertEquals(β(EQ, β(HEAD, β(TAIL, β(TAIL, β(TAIL, β(SORT, LIST))))), FOUR).compute(), TRUE);
+        assertEquals(β(EQ, β(NTH, ZERO, β(SORT, LIST)), ONE).compute(), TRUE);
+        assertEquals(β(EQ, β(NTH, ONE, β(SORT, LIST)), TWO).compute(), TRUE);
+        assertEquals(β(EQ, β(NTH, TWO, β(SORT, LIST)), THREE).compute(), TRUE);
+        assertEquals(β(EQ, β(NTH, THREE, β(SORT, LIST)), FOUR).compute(), TRUE);
         //@formatter:on
     }
 }
