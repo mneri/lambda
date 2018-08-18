@@ -1,7 +1,10 @@
 # lambda
 lambda is a small library that brings lambda calculus functions, syntax and lazy evaluation into Java.
 
+In lambda calculus everything is a λ-expression: there is no such thing as integer, floating point or operator. Numbers, operators and complex objects such as lists are encoded via λ-expressions.
+
 [![Build Status](https://travis-ci.org/mneri/lambda.svg?branch=master)](https://travis-ci.org/mneri/lambda)
+
 # Introduction
 
 One of the goals of the project is to make Java look like lambda calculus as much as possible. The identity function ![I](http://mneri.me/pnglatex?f=I%3D%5Clambda%20x%5Ccdot%20x%0A "I"), for example, is pretty close.
@@ -46,3 +49,7 @@ Church encoding for numbers through 16 and powers of two through 1024 have been 
 ```
 
 Standard high-order functions such as `FILTER`, `MAP`, `FOLDL` and `FOLDR`.
+
+# Performances
+
+Long story short, it sucks. But that has never been the goal.
