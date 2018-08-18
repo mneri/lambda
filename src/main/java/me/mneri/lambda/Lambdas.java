@@ -82,8 +82,9 @@ public final class Lambdas {
     public static final λ NIL   = FALSE;
     public static final λ ISNIL = (λ l) -> β(β(l, (λ h) -> (λ t) -> (λ d) -> FALSE), TRUE);
 
-    public static final λ CAT    = β(Y, (λ f) -> (λ i) -> (λ l) -> β(IF, β(ISNIL, i), l, β(CONS, β(HEAD, i), β(f, β(TAIL, i), l))));
+    public static final λ CAT    = β(Y, (λ f) -> (λ a) -> (λ b) -> β(IF, β(ISNIL, a), b, β(CONS, β(HEAD, a), β(f, β(TAIL, a), b))));
     public static final λ FILTER = β(Y, (λ f) -> (λ p) -> (λ l) -> β(IF, β(ISNIL, l), NIL, β(IF, β(p, β(HEAD, l)), β(CONS, β(HEAD, l), β(f, p, β(TAIL, l))), β(f, p, β(TAIL, l)))));
+    public static final λ FLIP   = (λ f) -> (λ x) -> (λ y) -> β(f, y, x);
     public static final λ FOLDL  = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(HEAD, l), β(f, a, z, β(TAIL, l)))));
     public static final λ FOLDR  = β(Y, (λ f) -> (λ a) -> (λ z) -> (λ l) -> β(IF, β(ISNIL, l), z, β(a, β(f, a, z, β(TAIL, l)), β(HEAD, l))));
     public static final λ LEN    = β(FOLDR, (λ a) -> (λ c) -> β(SUCC, a), ZERO);

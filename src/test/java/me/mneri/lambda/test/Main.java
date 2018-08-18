@@ -103,4 +103,20 @@ public class Main {
         assertEquals(β(EQ, β(MIN, FOUR, FIVE), FOUR).compute(), TRUE);
         assertEquals(β(EQ, β(MIN, FIVE, FOUR), FOUR).compute(), TRUE);
     }
+
+    @Test
+    public void sort() {
+        //@formatter:off
+        λ LIST = β(CONS, THREE, β(CONS, ONE, β(CONS, FOUR, β(CONS, TWO, NIL))));
+        λ SORT = β(Y, (λ f) -> (λ l) -> β(IF, β(ISNIL, l),
+                                              NIL,
+                                              β(CAT, β(CAT, β(f, β(FILTER, β(FLIP, LEQ, β(HEAD, l)), β(TAIL, l))),
+                                                                 β(CONS, β(HEAD, l), NIL)),
+                                                     β(f, β(FILTER, β(FLIP, GREAT, β(HEAD, l)), β(TAIL, l))))));
+        assertEquals(β(EQ, β(HEAD, β(SORT, LIST)), ONE).compute(), TRUE);
+        assertEquals(β(EQ, β(HEAD, β(TAIL, β(SORT, LIST))), TWO).compute(), TRUE);
+        assertEquals(β(EQ, β(HEAD, β(TAIL, β(TAIL, β(SORT, LIST)))), THREE).compute(), TRUE);
+        assertEquals(β(EQ, β(HEAD, β(TAIL, β(TAIL, β(TAIL, β(SORT, LIST))))), FOUR).compute(), TRUE);
+        //@formatter:on
+    }
 }
