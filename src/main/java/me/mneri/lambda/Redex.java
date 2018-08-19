@@ -3,13 +3,11 @@ package me.mneri.lambda;
 public class Redex implements λ {
     private λ cache;
     private λ x;
-    private λ y;
-    private λ[] zs;
+    private λ[] ys;
 
-    private Redex(λ x, λ y, λ... zs) {
+    private Redex(λ x, λ... ys) {
         this.x = x;
-        this.y = y;
-        this.zs = zs;
+        this.ys = ys;
     }
 
     @Override
@@ -20,22 +18,21 @@ public class Redex implements λ {
     @Override
     public λ compute() {
         if (cache == null) {
-            cache = x.apply(y);
+            cache = x.compute();
 
-            for (λ z : zs)
-                cache = cache.apply(z);
+            for (λ y : ys)
+                cache = cache.apply(y);
 
             cache = cache.compute();
 
             x = null;
-            y = null;
-            zs = null;
+            ys = null;
         }
 
         return cache;
     }
 
-    public static λ β(λ x, λ y, λ... z) {
-        return new Redex(x, y, z);
+    public static λ β(λ x, λ... ys) {
+        return new Redex(x, ys);
     }
 }
