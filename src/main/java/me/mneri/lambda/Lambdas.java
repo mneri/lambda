@@ -26,7 +26,7 @@ public final class Lambdas {
     public static final λ XOR   = (λ p) -> (λ q) -> β(p, β(NOT, q), q);
     public static final λ IF    = (λ p) -> (λ t) -> (λ f) -> β(p, t, f);
 
-    public static final λ CONST = (λ m) -> (λ x) -> m;
+    public static final λ CONST  = (λ m) -> (λ x) -> m;
     public static final λ ISZERO = (λ n) -> β(n, (λ x) -> FALSE, TRUE);
     public static final λ SUCC   = (λ n) -> (λ f) -> (λ x) -> β(f, β(n, f, x));
     public static final λ PRED   = (λ n) -> (λ f) -> (λ x) -> β(n, (λ g) -> (λ h) -> β(h, β(g, f)), (λ u) -> x, (λ u) -> u);
