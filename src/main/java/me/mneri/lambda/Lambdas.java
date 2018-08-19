@@ -36,6 +36,7 @@ public final class Lambdas {
     public static final λ MAX    = (λ m) -> (λ n) -> β(IF, β(ISZERO, β(SUB, m, n)), n, m);
     public static final λ MIN    = (λ m) -> (λ n) -> β(IF, β(ISZERO, β(SUB, m, n)), m, n);
 
+    public static final λ CONST = (λ m) -> (λ x) -> m;
     public static final λ LEQ   = (λ m) -> (λ n) -> β(ISZERO, β(SUB, m, n));
     public static final λ GEQ   = (λ m) -> (λ n) -> β(ISZERO, β(SUB, n, m));
     public static final λ EQ    = (λ m) -> (λ n) -> β(AND, β(LEQ, m, n), β(LEQ, n, m));
