@@ -20,6 +20,27 @@ One of the goals of the project is to make Java look like lambda calculus as muc
 
 Long story short, it sucks. But that has never been the goal.
 
+# Function Library
+The library contains a good number of λ-expressions. For example, three different fixed-point combinators (`X`, `Y`, and `Θ`).
+
+```java
+λ X = (λ f) -> β((λ x) -> β(x, x), (λ x) -> β(f, β(x, x)));
+λ Y = (λ f) -> β((λ x) -> β(f, β(x, x)), (λ x) -> β(f, β(x, x)));
+λ Θ = β((λ x) -> (λ y) -> β(y, β(x, x, y)), (λ x) -> (λ y) -> β(y, β(x, x, y)));
+```
+
+Church encoding for numbers through 16 and powers of two through 1024 have been implemented.
+
+```java
+λ ZERO  = (λ f) -> (λ x) -> x;
+λ ONE   = β(SUCC, ZERO);
+λ TWO   = β(SUCC, ONE);
+// ...
+λ ONETHOUSANDTWENTYFOUR = β(EXP, TWO, TEN);
+```
+
+Standard high-order functions such as `FILTER`, `MAP`, `FOLDL` and `FOLDR`.
+
 # Example
 ```java
 λ FACT = β(Y, (λ f) -> (λ n) -> β(IF, β(LEQ, n, ONE),
@@ -48,24 +69,3 @@ Long story short, it sucks. But that has never been the goal.
                                                          β(CONS, β(HEAD, l), NIL)),
                                              β(f, β(FILTER, β(FLIP, GREAT, β(HEAD, l)), β(TAIL, l))))));
 ```
-
-# Function Library
-The library contains a good number of λ-expressions. For example, three different fixed-point combinators (`X`, `Y`, and `Θ`).
-
-```java
-λ X = (λ f) -> β((λ x) -> β(x, x), (λ x) -> β(f, β(x, x)));
-λ Y = (λ f) -> β((λ x) -> β(f, β(x, x)), (λ x) -> β(f, β(x, x)));
-λ Θ = β((λ x) -> (λ y) -> β(y, β(x, x, y)), (λ x) -> (λ y) -> β(y, β(x, x, y)));
-```
-
-Church encoding for numbers through 16 and powers of two through 1024 have been implemented.
-
-```java
-λ ZERO  = (λ f) -> (λ x) -> x;
-λ ONE   = β(SUCC, ZERO);
-λ TWO   = β(SUCC, ONE);
-// ...
-λ ONETHOUSANDTWENTYFOUR = β(EXP, TWO, TEN);
-```
-
-Standard high-order functions such as `FILTER`, `MAP`, `FOLDL` and `FOLDR`.
