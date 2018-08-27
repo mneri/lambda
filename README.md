@@ -49,13 +49,13 @@ Standard high-order functions such as `FILTER`, `MAP`, `FOLDL` and `FOLDR`.
 ```
 
 ```java
-λ FIB = β(Θ, (λ f) -> (λ n) -> β(IF, β(LEQ, n, TWO),
+λ FIB = β(Y, (λ f) -> (λ n) -> β(IF, β(LEQ, n, TWO),
                                      ONE,
                                      β(ADD, β(f, β(PRED, n)), β(f, β(SUB, n, TWO)))));
 ```
 
 ```java
-λ COLLATZ = β(X, (λ f) -> (λ n) -> β(IF, β(EQ, n, ONE),
+λ COLLATZ = β(Y, (λ f) -> (λ n) -> β(IF, β(EQ, n, ONE),
                                          β(CONS, ONE, NIL),
                                          β(CONS, n, β(f, β(IF, β(ISEVEN, n),
                                                                β(DIV, n, TWO),
