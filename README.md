@@ -41,7 +41,7 @@ Church encoding for numbers through 16 and powers of two through 1024 have been 
 
 Standard high-order functions such as `FILTER`, `MAP`, `FOLDL` and `FOLDR`.
 
-# Example
+# Examples
 ```java
 λ FACT = β(Y, (λ f) -> (λ n) -> β(IF, β(LEQ, n, ONE),
                                       ONE,
