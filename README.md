@@ -1,7 +1,5 @@
 # lambda
-`lambda` is a small library that brings lambda calculus functions, syntax and lazy evaluation into Java.
-
-In lambda calculus everything is a λ-expression: there is no such thing as integer, floating point or operator. Numbers, operators and complex objects such as lists are encoded via λ-expressions.
+`lambda` is a really tiny library that brings lambda calculus in Java.
 
 [![Build Status](https://travis-ci.org/mneri/lambda.svg?branch=master)](https://travis-ci.org/mneri/lambda)
 
@@ -23,7 +21,17 @@ One of the goals of the project is to make Java look like lambda calculus as muc
 Long story short, it sucks. But that has never been the goal.
 
 # Example
-The Collatz function can be implemented as follows.
+```java
+λ FACT = β(Y, (λ f) -> (λ n) -> β(IF, β(LEQ, n, ONE),
+                                      ONE,
+                                      β(MUL, n, β(f, β(PRED, n)))));
+```
+
+```java
+λ FIB = β(Θ, (λ f) -> (λ n) -> β(IF, β(LEQ, n, TWO),
+                                     ONE,
+                                     β(ADD, β(f, β(PRED, n)), β(f, β(SUB, n, TWO)))));
+```
 
 ```java
 λ COLLATZ = β(X, (λ f) -> (λ n) -> β(IF, β(EQ, n, ONE),
@@ -31,6 +39,14 @@ The Collatz function can be implemented as follows.
                                          β(CONS, n, β(f, β(IF, β(ISEVEN, n),
                                                                β(DIV, n, TWO),
                                                                β(SUCC, β(MUL, n, THREE)))))));
+```
+
+```java
+λ SORT = β(Y, (λ f) -> (λ l) -> β(IF, β(ISNIL, l),
+                                      NIL,
+                                      β(CAT, β(CAT, β(f, β(FILTER, β(FLIP, LEQ, β(HEAD, l)), β(TAIL, l))),
+                                                         β(CONS, β(HEAD, l), NIL)),
+                                             β(f, β(FILTER, β(FLIP, GREAT, β(HEAD, l)), β(TAIL, l))))));
 ```
 
 # Function Library
