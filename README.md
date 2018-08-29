@@ -1,6 +1,7 @@
 # lambda
 `lambda` is a really tiny library that brings lambda calculus in Java.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ee59eb78d354cbc9b38ffd3199e187e)](https://app.codacy.com/app/mneri7/lambda?utm_source=github.com&utm_medium=referral&utm_content=mneri/lambda&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/mneri/lambda.svg?branch=master)](https://travis-ci.org/mneri/lambda)
 
 # Introduction
