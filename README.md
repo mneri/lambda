@@ -1,8 +1,7 @@
 # lambda
-`lambda` is a small library that brings lambda calculus functions, syntax and lazy evaluation into Java.
+`lambda` is a really tiny library that brings lambda calculus in Java.
 
-In lambda calculus everything is a λ-expression: there is no such thing as integer, floating point or operator. Numbers, operators and complex objects such as lists are encoded via λ-expressions.
-
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ee59eb78d354cbc9b38ffd3199e187e)](https://app.codacy.com/app/mneri7/lambda?utm_source=github.com&utm_medium=referral&utm_content=mneri/lambda&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/mneri/lambda.svg?branch=master)](https://travis-ci.org/mneri/lambda)
 
 # Introduction
@@ -21,17 +20,6 @@ One of the goals of the project is to make Java look like lambda calculus as muc
 # Performances
 
 Long story short, it sucks. But that has never been the goal.
-
-# Example
-The Collatz function can be implemented as follows.
-
-```java
-λ COLLATZ = β(X, (λ f) -> (λ n) -> β(IF, β(EQ, n, ONE),
-                                         β(CONS, ONE, NIL),
-                                         β(CONS, n, β(f, β(IF, β(ISEVEN, n),
-                                                               β(DIV, n, TWO),
-                                                               β(SUCC, β(MUL, n, THREE)))))));
-```
 
 # Function Library
 The library contains a good number of λ-expressions. For example, three different fixed-point combinators (`X`, `Y`, and `Θ`).
@@ -53,3 +41,32 @@ Church encoding for numbers through 16 and powers of two through 1024 have been 
 ```
 
 Standard high-order functions such as `FILTER`, `MAP`, `FOLDL` and `FOLDR`.
+
+# Examples
+```java
+λ FACT = β(Y, (λ f) -> (λ n) -> β(IF, β(LEQ, n, ONE),
+                                      ONE,
+                                      β(MUL, n, β(f, β(PRED, n)))));
+```
+
+```java
+λ FIB = β(Y, (λ f) -> (λ n) -> β(IF, β(LEQ, n, TWO),
+                                     ONE,
+                                     β(ADD, β(f, β(PRED, n)), β(f, β(SUB, n, TWO)))));
+```
+
+```java
+λ COLLATZ = β(Y, (λ f) -> (λ n) -> β(IF, β(EQ, n, ONE),
+                                         β(CONS, ONE, NIL),
+                                         β(CONS, n, β(f, β(IF, β(ISEVEN, n),
+                                                               β(DIV, n, TWO),
+                                                               β(SUCC, β(MUL, n, THREE)))))));
+```
+
+```java
+λ SORT = β(Y, (λ f) -> (λ l) -> β(IF, β(ISNIL, l),
+                                      NIL,
+                                      β(CAT, β(CAT, β(f, β(FILTER, β(FLIP, LEQ, β(HEAD, l)), β(TAIL, l))),
+                                                         β(CONS, β(HEAD, l), NIL)),
+                                             β(f, β(FILTER, β(FLIP, GREAT, β(HEAD, l)), β(TAIL, l))))));
+```
