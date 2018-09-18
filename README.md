@@ -3,6 +3,8 @@
 
 [![Build Status](https://travis-ci.org/mneri/lambda.svg?branch=master)](https://travis-ci.org/mneri/lambda)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ee59eb78d354cbc9b38ffd3199e187e)](https://app.codacy.com/app/mneri7/lambda?utm_source=github.com&utm_medium=referral&utm_content=mneri/lambda&utm_campaign=Badge_Grade_Dashboard)
+[![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/mneri/lambda.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/mneri/lambda/context:java)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/mneri/lambda.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/mneri/lambda/alerts/)
 [![Coverage Status](https://coveralls.io/repos/github/mneri/lambda/badge.svg?branch=master)](https://coveralls.io/github/mneri/lambda?branch=master)
 
 # Introduction
