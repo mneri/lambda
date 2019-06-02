@@ -22,7 +22,7 @@ One of the goals of the project is to make Java look like lambda calculus as muc
 
 # Performances
 
-Long story short, it sucks. But that has never been the goal.
+Long story short, it sucks, but it has never been the goal.
 
 # Function Library
 The library contains a good number of λ-expressions. For example, three different fixed-point combinators (`X`, `Y`, and `Θ`).
